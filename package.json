@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@react-native/codegen": "^0.76.5"
+  }
+}
