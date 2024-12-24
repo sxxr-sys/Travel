@@ -2,70 +2,76 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useTheme } from "../context/ThemeProvider";
+import { useLanguage } from "../context/LanguageContext";  // Assuming you have a LanguageContext
 
 const KhuvsgulItinerary = () => {
+    const { isDarkMode } = useTheme();  // For theme toggling
+    const { language } = useLanguage();  // For language selection
+
+    // Define the itinerary with translations
     const itinerary = [
         {
-            day: "Өдөр 1",
-            title: "Улаанбаатараас Мөрөн рүү",
-            description: "Улаанбаатараас Мөрөн рүү машинаар явах.",
+            day: language === "en" ? "Day 1" : "Өдөр 1",
+            title: language === "en" ? "From Ulaanbaatar to Mörön" : "Улаанбаатараас Мөрөн рүү",
+            description: language === "en" ? "Travel by car from Ulaanbaatar to Mörön." : "Улаанбаатараас Мөрөн рүү машинаар явах.",
             image: "/day1.jpg",
             link: "/itinerary/day1",
         },
         {
-            day: "Өдөр 2",
-            title: "Мөрөнөөс Хөвсгөл Нуур руу",
-            description: "Мөрөнөөс Хөвсгөл нуур руу машинаар хүрэх.",
+            day: language === "en" ? "Day 2" : "Өдөр 2",
+            title: language === "en" ? "From Mörön to Khuvsgul Lake" : "Мөрөнөөс Хөвсгөл Нуур руу",
+            description: language === "en" ? "Drive from Mörön to Khuvsgul Lake." : "Мөрөнөөс Хөвсгөл нуур руу машинаар хүрэх.",
             image: "/day2.jpg",
             link: "/itinerary/day2",
         },
         {
-            day: "Өдөр 3",
-            title: "Цаатан Ард Түмэнтэй Уулзах",
-            description: "Хөвсгөл нуур – Цаатан ард түмэнтэй уулзах.",
+            day: language === "en" ? "Day 3" : "Өдөр 3",
+            title: language === "en" ? "Meet the Tsaatan People" : "Цаатан Ард Түмэнтэй Уулзах",
+            description: language === "en" ? "Meet the Tsaatan people at Khuvsgul Lake." : "Хөвсгөл нуур – Цаатан ард түмэнтэй уулзах.",
             image: "/day3.jpg",
             link: "/itinerary/day3",
         },
         {
-            day: "Өдөр 4",
-            title: "Морьтой Аялал",
-            description: "Хөвсгөл нуур – Морьтой аялал.",
+            day: language === "en" ? "Day 4" : "Өдөр 4",
+            title: language === "en" ? "Horseback Riding Adventure" : "Морьтой Аялал",
+            description: language === "en" ? "Enjoy a horseback riding adventure at Khuvsgul Lake." : "Хөвсгөл нуур – Морьтой аялал.",
             image: "/day4.jpg",
             link: "/itinerary/day4",
         },
         {
-            day: "Өдөр 5",
-            title: "Нуурын Өдөр",
-            description: "Хөвсгөл нуур – Нуурын өдөр.",
+            day: language === "en" ? "Day 5" : "Өдөр 5",
+            title: language === "en" ? "A Day at the Lake" : "Нуурын Өдөр",
+            description: language === "en" ? "Spend the day by the beautiful Khuvsgul Lake." : "Хөвсгөл нуур – Нуурын өдөр.",
             image: "/day5.jpg",
             link: "/itinerary/day5",
         },
         {
-            day: "Өдөр 6",
-            title: "Салах Ёс",
-            description: "Хөвсгөл нууртай салах ёс хийх.",
+            day: language === "en" ? "Day 6" : "Өдөр 6",
+            title: language === "en" ? "Farewell to Khuvsgul Lake" : "Салах Ёс",
+            description: language === "en" ? "Say goodbye to Khuvsgul Lake." : "Хөвсгөл нууртай салах ёс хийх.",
             image: "/day6.jpg",
             link: "/itinerary/day6",
         },
         {
-            day: "Өдөр 7",
-            title: "Улаанбаатар Руу Буцах",
-            description: "Улаанбаатар руу буцаж явах.",
+            day: language === "en" ? "Day 7" : "Өдөр 7",
+            title: language === "en" ? "Return to Ulaanbaatar" : "Улаанбаатар Руу Буцах",
+            description: language === "en" ? "Drive back to Ulaanbaatar." : "Улаанбаатар руу буцаж явах.",
             image: "/day7.jpg",
             link: "/itinerary/day7",
         },
     ];
 
     return (
-        <section className="bg-gray-50 py-16 px-6">
+        <section className={`py-16 px-6 ${isDarkMode ? "bg-gray-800 text-gray-300" : "bg-gray-50 text-gray-800"}`}>
             <div className="max-w-7xl mx-auto">
-                <h2 className="text-4xl font-bold text-gray-800 text-center mb-12">
-                    Хөвсгөл Нуур 7 Өдрийн Аяллын Маршрут
+                <h2 className="text-4xl font-bold text-center mb-12">
+                    {language === "en" ? "Khuvsgul Lake 7-Day Itinerary" : "Хөвсгөл Нуур 7 Өдрийн Аяллын Маршрут"}
                 </h2>
 
                 {/* Itinerary Timeline */}
                 <div className="relative">
-                    <div className="border-l-4 border-blue-500 absolute h-full left-1/2 transform -translate-x-1/2"></div>
+                    <div className="border-l-4 border-blue-500 absolute h-full left-1/2 transform -translate-x-1/2 hidden lg:block"></div>
 
                     {itinerary.map((item, index) => (
                         <div
@@ -88,6 +94,7 @@ const KhuvsgulItinerary = () => {
                                         width={500}
                                         height={300}
                                         objectFit="cover"
+                                        layout="intrinsic"
                                     />
                                 </Link>
                             </div>
@@ -100,4 +107,3 @@ const KhuvsgulItinerary = () => {
 };
 
 export default KhuvsgulItinerary;
-
