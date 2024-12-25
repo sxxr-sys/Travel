@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 
 const Day7 = () => {
@@ -14,10 +15,12 @@ const Day7 = () => {
                 </p>
 
                 {/* Main Image */}
-                <img
+                <Image
                     src="/day7.jpg"
                     alt="Өдөр 7: Улаанбаатар руу буцах"
                     className="w-full h-auto rounded-lg shadow-lg mb-8"
+                    width={1200} // Add a width for optimization
+                    height={800} // Add a height for optimization
                 />
 
                 {/* Section: Journey Back to Ulaanbaatar */}
@@ -58,7 +61,7 @@ const Day7 = () => {
                             width="100%"
                             height="100%"
                             style={{ border: 0 }}
-                            allowFullScreen=""
+                            
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
                         ></iframe>

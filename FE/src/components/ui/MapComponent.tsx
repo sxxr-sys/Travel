@@ -23,7 +23,7 @@ const MapComponent = () => {
                         src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d2728521.0977193453!2d100.92085293984327!3d48.4814702572968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x5d969430fe2ec81b%3A0x7d6e0b937e550c61!2z0JDQu9C10LHQsCDQkNC10L3QuNC90LDRgNC40Y8!3m2!1d47.9214474!2d106.9057434!4m5!1s0x5d6ac1af319653f3%3A0x894fdb7c75af2069!2z0JDQkNC10L3QuNC90LDRgCDQkNC60L7QstCw0YbQtdC90LjQvdGB0LrQsNC90LDRgNC40Y8!3m2!1d49.6303801!2d100.1556059!5e0!3m2!1sen!2smn!4v1698613183734!5m2!1sen!2smn"
                         width="100%"
                         height="400"
-                        allowFullScreen=""
+
                         loading="lazy"
                         className="rounded-lg shadow-lg"
                     ></iframe>

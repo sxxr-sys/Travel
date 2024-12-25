@@ -1,8 +1,14 @@
 import React, { createContext, useContext, useState } from "react";
 
-const LanguageContext = createContext({
+// Define the context type
+interface LanguageContextType {
+    language: string;
+    setLanguage: (lang: string) => void;
+}
+
+const LanguageContext = createContext<LanguageContextType>({
     language: "en", // Default to English
-    setLanguage: (lang: string) => { },
+    setLanguage: () => { }, // Placeholder function
 });
 
 export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {

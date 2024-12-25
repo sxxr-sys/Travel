@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLanguage } from "@/components/context/LanguageContext";
 import { useTheme } from "@/components/context/ThemeProvider";
+import Image from "next/image"; // Import Image from next/image
 
 const ExplorePage = () => {
     const { language } = useLanguage();
@@ -10,7 +11,6 @@ const ExplorePage = () => {
 
     return (
         <div className={`min-h-screen ${isDarkMode ? "bg-gray-900 text-gray-500" : "bg-white text-gray-800"}`}>
-
 
             {/* Explore Section */}
             <section className="py-20 px-6 text-center">
@@ -20,7 +20,13 @@ const ExplorePage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Destination Card 1 */}
                     <div className="p-6 bg-gray-100 rounded-lg shadow-lg">
-                        <img src="/khuvsgul-lake.jpg" alt="Khuvsgul Lake" className="w-full h-56 object-cover rounded-lg mb-4" />
+                        <Image
+                            src="/khuvsgul-lake.jpg"
+                            alt="Khuvsgul Lake"
+                            width={500}
+                            height={350}
+                            className="w-full h-56 object-cover rounded-lg mb-4"
+                        />
                         <h3 className="text-2xl font-semibold mb-4">Хөвсгөл Нуур</h3>
                         <p className="text-gray-600 mb-4">
                             {language === "en"
@@ -36,7 +42,13 @@ const ExplorePage = () => {
 
                     {/* Destination Card 2 */}
                     <div className="p-6 bg-gray-100 rounded-lg shadow-lg">
-                        <img src="/Gobi.jpg" alt="Gobi Desert" className="w-full h-56 object-cover rounded-lg mb-4" />
+                        <Image
+                            src="/Gobi.jpg"
+                            alt="Gobi Desert"
+                            width={500}
+                            height={350}
+                            className="w-full h-56 object-cover rounded-lg mb-4"
+                        />
                         <h3 className="text-2xl font-semibold mb-4">Говь</h3>
                         <p className="text-gray-600 mb-4">
                             {language === "en"
@@ -52,7 +64,13 @@ const ExplorePage = () => {
 
                     {/* Destination Card 3 */}
                     <div className="p-6 bg-gray-100 rounded-lg shadow-lg">
-                        <img src="Terelj.jpg" alt="Terelj National Park" className="w-full h-56 object-cover rounded-lg mb-4" />
+                        <Image
+                            src="/Terelj.jpg"
+                            alt="Terelj National Park"
+                            width={500}
+                            height={350}
+                            className="w-full h-56 object-cover rounded-lg mb-4"
+                        />
                         <h3 className="text-2xl font-semibold mb-4">Тэрэлж Үндэсний Парк</h3>
                         <p className="text-gray-600 mb-4">
                             {language === "en"

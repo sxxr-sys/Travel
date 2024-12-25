@@ -32,6 +32,13 @@ export const Navbar = () => {
                     <button onClick={toggleDarkMode} className="p-2 rounded-full">
                         {isDarkMode ? <Sun className="text-yellow-400" /> : <Moon className="text-blue-400" />}
                     </button>
+
+                    {/* Sign Up Button */}
+                    <Link href="/sign-up">
+                        <button className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition">
+                            {language === "en" ? "Sign Up" : "Бүртгүүлэх"}
+                        </button>
+                    </Link>
                 </div>
             </div>
         </nav>

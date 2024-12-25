@@ -1,12 +1,13 @@
 "use client";
 
-import { FaStar } from "react-icons/fa"; // Star icon for rating
-import { useLanguage } from "../context/LanguageContext"; // Assuming you have a LanguageContext
-import { useTheme } from "../context/ThemeProvider"; // Assuming you have a ThemeContext for dark mode
+import Image from "next/image"; // Import the Image component from Next.js
+import { FaStar } from "react-icons/fa";
+import { useLanguage } from "../context/LanguageContext";
+import { useTheme } from "../context/ThemeProvider";
 
 const KhuvsgulReview = () => {
-  const { language } = useLanguage(); // Get the current language from context
-  const { isDarkMode } = useTheme(); // Get the dark mode state from context
+  const { language } = useLanguage();
+  const { isDarkMode } = useTheme();
 
   const reviews = [
     {
@@ -49,10 +50,12 @@ const KhuvsgulReview = () => {
               className={`bg-white shadow-lg rounded-lg p-6 transition duration-300 hover:shadow-2xl ${isDarkMode ? "bg-gray-700" : ""}`}
             >
               <div className="flex items-center mb-4">
-                <img
+                <Image
                   src={review.image}
                   alt={review.name}
-                  className="w-16 h-16 object-cover rounded-full mr-4"
+                  width={64} // Specify the width
+                  height={64} // Specify the height
+                  className="object-cover rounded-full mr-4"
                 />
                 <div>
                   <h3 className="text-xl font-semibold">{review.name}</h3>

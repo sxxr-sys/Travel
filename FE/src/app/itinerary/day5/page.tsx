@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 
 const Day5 = () => {
@@ -14,10 +15,12 @@ const Day5 = () => {
                 </p>
 
                 {/* Main Image */}
-                <img
+                <Image
                     src="/day5.jpg"
                     alt="Өдөр 5: Нуурын Өдөр"
                     className="w-full h-auto rounded-lg shadow-lg mb-8"
+                    width={1200} // Add a width for optimization
+                    height={800} // Add a height for optimization
                 />
 
                 {/* Section: Route Details */}
@@ -31,7 +34,7 @@ const Day5 = () => {
                         src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d275513.63521509594!2d100.16371329999998!3d50.5749964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x5d95a5d721e7c47f%3A0x7b0af77b12d98af9!2z0JDQkNC90LXRhNC40YDQvtGB0YLRgNC10LzQvdGB0LrQsNGPINGD0LTQvtC10LrRgNCw0LvRjNGG0LjQsNC60LjRhtCw!3m2!1d50.5749964!2d100.1637133!4m5!1s0x5d94d7c3e1309147%3A0x77e4a11b7be71ab8!2z0JDQkNCy0LDQtNCy0YvQvdC40Lkg0L_RgNC-0LTQtdGA0LjQt9C90LjQuSDQsdC40LLQtdC90YLQsNGC!3m2!1d51.2!2d100.717!5e0!3m2!1sen!2smn!4v1700000000000!5m2!1sen!2smn"
                         width="100%"
                         height="400"
-                        allowFullScreen=""
+
                         loading="lazy"
                         className="rounded-lg shadow-lg"
                     ></iframe>

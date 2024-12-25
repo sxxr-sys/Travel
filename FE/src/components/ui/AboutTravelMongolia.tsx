@@ -1,7 +1,8 @@
 "use client";
 
-import { useLanguage } from "../context/LanguageContext";  // Make sure you have the correct path
-import { useTheme } from "../context/ThemeProvider";  // Ensure correct path for ThemeProvider
+import Image from "next/image"; // Import the Image component
+import { useLanguage } from "../context/LanguageContext";
+import { useTheme } from "../context/ThemeProvider";
 
 const AboutTravelMongolia = () => {
     const { language } = useLanguage();
@@ -26,9 +27,11 @@ const AboutTravelMongolia = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Feature 1: Nomadic Life */}
                     <div className="p-6 bg-white shadow-lg rounded-lg transition-transform transform hover:scale-105 hover:shadow-xl">
-                        <img
+                        <Image
                             src="/nomadic-life.jpg"
                             alt="Nomadic Life"
+                            width={500} // Provide width and height for optimization
+                            height={300}
                             className="w-full h-48 object-cover rounded-lg mb-4"
                         />
                         <h3 className="text-2xl font-semibold mb-2">{language === "en" ? "Nomadic Life" : "Нүүдэлчин Амьдрал"}</h3>
@@ -41,9 +44,11 @@ const AboutTravelMongolia = () => {
 
                     {/* Feature 2: Diverse Landscapes */}
                     <div className="p-6 bg-white shadow-lg rounded-lg transition-transform transform hover:scale-105 hover:shadow-xl">
-                        <img
+                        <Image
                             src="/landscape.jpg"
                             alt="Diverse Landscapes"
+                            width={500} // Provide width and height for optimization
+                            height={300}
                             className="w-full h-48 object-cover rounded-lg mb-4"
                         />
                         <h3 className="text-2xl font-semibold mb-2">{language === "en" ? "Diverse Landscapes" : "Өвөрмөц Байгалийн Дүр зураг"}</h3>
@@ -56,9 +61,11 @@ const AboutTravelMongolia = () => {
 
                     {/* Feature 3: Rich History */}
                     <div className="p-6 bg-white shadow-lg rounded-lg transition-transform transform hover:scale-105 hover:shadow-xl">
-                        <img
+                        <Image
                             src="/history.jpg"
                             alt="Rich History"
+                            width={500} // Provide width and height for optimization
+                            height={300}
                             className="w-full h-48 object-cover rounded-lg mb-4"
                         />
                         <h3 className="text-2xl font-semibold mb-2">{language === "en" ? "Rich History" : "Эртний Түүх"}</h3>
