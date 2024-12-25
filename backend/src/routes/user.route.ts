@@ -1,8 +1,8 @@
-import express, { Request, Response } from "express";  
+import express, { Request, Response, Router } from "express";  
 import User from "../models/user.model";
 
 
-const userRouters = express.Router();
+const userRouters = Router();
 userRouters.get("/getUser", async (req: Request, res: Response) => {
   try {
     const users = await User.find();
@@ -12,6 +12,7 @@ userRouters.get("/getUser", async (req: Request, res: Response) => {
   }
 });
 userRouters.post("/createUser", async (req: Request, res: Response) => {
+  console.log(req)
   try {
     const { name, email, password } = req.body;
     const newUser = new User({ name, email, password });

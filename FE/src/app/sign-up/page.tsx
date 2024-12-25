@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import axios from 'axios';
 import { useLanguage } from "@/components/context/LanguageContext";
 import { useTheme } from "@/components/context/ThemeProvider";
+import { axiosInstance } from "@/libs/axios";
 
 const Signup: React.FC = () => {
   const { language } = useLanguage();
@@ -12,7 +12,7 @@ const Signup: React.FC = () => {
     name: "",
     email: "",
     password: "",
-    role: "User", // Default role
+    role: "User",
   });
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
@@ -24,17 +24,22 @@ const Signup: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     try {
-      await axios.post("/api/signup", formData); // No need to store the response if it's not used
+      await axiosInstance.post("/user/createUser", {
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        role: formData.role
+      });
+
       setSuccessMessage(language === "en" ? "User created successfully!" : "Хэрэглэгч амжилттай үүсгэсэн!");
+      setError(null);
       setFormData({
         name: "",
         email: "",
         password: "",
         role: "User",
       });
-      setError(null);
     } catch {
       setError(language === "en" ? "Failed to create user. Please try again." : "Хэрэглэгч үүсгэхэд алдаа гарлаа. Дахин оролдоно уу.");
       setSuccessMessage(null);
@@ -48,11 +53,11 @@ const Signup: React.FC = () => {
           {language === "en" ? "Sign Up" : "Бүртгүүлэх"}
         </h2>
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Error and Success Messages */}
+
           {error && <p className="text-red-500">{error}</p>}
           {successMessage && <p className="text-green-500">{successMessage}</p>}
 
-          {/* Name Field */}
+
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="name">
               {language === "en" ? "Full Name" : "Нэр"}
@@ -72,7 +77,7 @@ const Signup: React.FC = () => {
             />
           </div>
 
-          {/* Email Field */}
+
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="email">
               {language === "en" ? "Email Address" : "Имэйл Хаяг"}
@@ -92,7 +97,7 @@ const Signup: React.FC = () => {
             />
           </div>
 
-          {/* Password Field */}
+
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="password">
               {language === "en" ? "Password" : "Нууц Үг"}
@@ -112,7 +117,7 @@ const Signup: React.FC = () => {
             />
           </div>
 
-          {/* Role Field */}
+
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="role">
               {language === "en" ? "Role" : "Тамга"}
@@ -131,7 +136,7 @@ const Signup: React.FC = () => {
             </select>
           </div>
 
-          {/* Submit Button */}
+
           <div className="text-center">
             <button
               type="submit"

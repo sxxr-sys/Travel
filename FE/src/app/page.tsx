@@ -6,8 +6,6 @@ import KhuvsgulTourPackages from "@/components/ui/KhuvsgulTourPackages";
 import LandingPage from "@/components/ui/landing";
 import MapComponent from "@/components/ui/MapComponent";
 
-
-
 export default function Home() {
   return (
     <div className="">
