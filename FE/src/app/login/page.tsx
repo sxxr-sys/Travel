@@ -5,22 +5,19 @@ import { useTheme } from "@/components/context/ThemeProvider";
 import { axiosInstance } from "@/libs/axios";
 import { useRouter } from "next/navigation";
 
-
-const Signup: React.FC = () => {
+const Login: React.FC = () => {
   const { language } = useLanguage();
   const { isDarkMode } = useTheme();
   const router = useRouter();
 
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
     password: "",
-    role: "User",
   });
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -28,29 +25,22 @@ const Signup: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axiosInstance.post("/auth/sign-up", {
-        name: formData.name,
+      await axiosInstance.post("/user/getUser", {
         email: formData.email,
         password: formData.password,
-        role: formData.role,
       });
 
-      setSuccessMessage(language === "en" ? "User created successfully!" : "Хэрэглэгч амжилттай үүсгэсэн!");
+      setSuccessMessage(language === "en" ? "Login successful!" : "Нэвтрэлт амжилттай!");
       setError(null);
       setFormData({
-        name: "",
         email: "",
         password: "",
-        role: "User",
       });
-
-      // Redirect to the login page after successful signup
       setTimeout(() => {
-        router.push("/login");
-      }, 2000); // Wait for a few seconds to show the success message before redirecting
-
+        router.push("/");
+      }, 2000);
     } catch {
-      setError(language === "en" ? "Failed to create user. Please try again." : "Хэрэглэгч үүсгэхэд алдаа гарлаа. Дахин оролдоно уу.");
+      setError(language === "en" ? "Failed to log in. Please try again." : "Нэвтрэхэд алдаа гарлаа. Дахин оролдоно уу.");
       setSuccessMessage(null);
     }
   };
@@ -59,33 +49,11 @@ const Signup: React.FC = () => {
     <div className={`min-h-screen ${isDarkMode ? "bg-gray-900 text-gray-200" : "bg-gray-100 text-gray-800"} py-20 px-6`}>
       <div className={`max-w-3xl mx-auto p-8 rounded-lg shadow-lg ${isDarkMode ? "bg-gray-800" : "bg-white"}`}>
         <h2 className="text-3xl font-bold text-center mb-8">
-          {language === "en" ? "Sign Up" : "Бүртгүүлэх"}
+          {language === "en" ? "Log In" : "Нэвтрэх"}
         </h2>
         <form onSubmit={handleSubmit} className="space-y-6">
-
           {error && <p className="text-red-500">{error}</p>}
           {successMessage && <p className="text-green-500">{successMessage}</p>}
-
-
-          <div>
-            <label className="block text-lg font-semibold mb-2" htmlFor="name">
-              {language === "en" ? "Full Name" : "Нэр"}
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 ${isDarkMode
-                ? "bg-gray-700 border-gray-600 text-gray-200 focus:ring-blue-500"
-                : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500"
-                }`}
-              placeholder={language === "en" ? "Your Full Name" : "Таны Нэр"}
-            />
-          </div>
-
 
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="email">
@@ -106,7 +74,6 @@ const Signup: React.FC = () => {
             />
           </div>
 
-
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="password">
               {language === "en" ? "Password" : "Нууц Үг"}
@@ -126,26 +93,6 @@ const Signup: React.FC = () => {
             />
           </div>
 
-
-          <div>
-            <label className="block text-lg font-semibold mb-2" htmlFor="role">
-              {language === "en" ? "Role" : "Тамга"}
-            </label>
-            <select
-              name="role"
-              value={formData.role}
-              onChange={handleChange}
-              className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 ${isDarkMode
-                ? "bg-gray-700 border-gray-600 text-gray-200 focus:ring-blue-500"
-                : "bg-white border-gray-300 text-gray-800 focus:ring-blue-500"
-                }`}
-            >
-              <option value="User">{language === "en" ? "User" : "Хэрэглэгч"}</option>
-              <option value="Admin">{language === "en" ? "Admin" : "Админ"}</option>
-            </select>
-          </div>
-
-
           <div className="text-center">
             <button
               onClick={handleSubmit}
@@ -155,7 +102,7 @@ const Signup: React.FC = () => {
                 : "bg-blue-500 hover:bg-blue-600 text-white"
                 }`}
             >
-              {language === "en" ? "Sign Up" : "Бүртгүүлэх"}
+              {language === "en" ? "Log In" : "Нэвтрэх"}
             </button>
           </div>
         </form>
@@ -164,4 +111,4 @@ const Signup: React.FC = () => {
   );
 };
 
-export default Signup;
+export default Login;
