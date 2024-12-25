@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import userRouters from "./routes/user.route";
+import authRouters from "./routes/auth";
 import cors from "cors";
 import bodyParser from "body-parser";
 import { Connect } from "./utils/db";
@@ -17,7 +17,7 @@ app.use(cors({
 }
 ));
 
-app.use("/user", userRouters);
+app.use("/auth", authRouters);
 
 app.listen(PORT, async () => {
 Connect(process.env.MONGO_URI as string)
